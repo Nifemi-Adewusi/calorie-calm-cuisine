@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Meal, getRecommendedMeals } from "@/utils/mealData";
 import MealList from "./MealList";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface MealRecommendationProps {
   calories: number;
@@ -11,29 +12,59 @@ interface MealRecommendationProps {
 const MealRecommendation = ({ calories }: MealRecommendationProps) => {
   const [recommendedMeals, setRecommendedMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
+  const [healthCondition, setHealthCondition] = useState<string>("");
 
   useEffect(() => {
     if (calories > 0) {
       setLoading(true);
       // Simulating API call with setTimeout
       setTimeout(() => {
-        const meals = getRecommendedMeals(calories);
+        const meals = getRecommendedMeals(calories, healthCondition || undefined);
         setRecommendedMeals(meals);
         setLoading(false);
       }, 1000);
     }
-  }, [calories]);
+  }, [calories, healthCondition]);
 
   if (calories === 0) {
     return null;
   }
 
+  const healthConditions = [
+    { value: "", label: "No specific condition" },
+    { value: "diabetes-friendly", label: "Diabetes Friendly" },
+    { value: "weight-loss", label: "Weight Loss" },
+    { value: "weight-gain", label: "Weight Gain" },
+    { value: "heart-healthy", label: "Heart Healthy" }
+  ];
+
   return (
     <div className="mt-12">
-      <h2 className="text-2xl font-semibold mb-4">Your Recommended Meals</h2>
-      <p className="text-muted-foreground mb-8">
-        Based on your daily requirement of {calories} calories, here's a suggested meal plan:
+      <h2 className="text-2xl font-semibold mb-4">Your Recommended Nigerian Meals</h2>
+      <p className="text-muted-foreground mb-4">
+        Based on your daily requirement of {calories} calories, here's a suggested Nigerian meal plan:
       </p>
+
+      <div className="mb-8">
+        <h3 className="text-md font-medium mb-2">Do you have any specific health needs?</h3>
+        <Select value={healthCondition} onValueChange={setHealthCondition}>
+          <SelectTrigger className="w-full md:w-[300px]">
+            <SelectValue placeholder="Select health condition" />
+          </SelectTrigger>
+          <SelectContent>
+            {healthConditions.map((condition) => (
+              <SelectItem key={condition.value} value={condition.value}>
+                {condition.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {healthCondition && (
+          <p className="text-sm text-mint-500 mt-2">
+            Your meal plan has been adjusted for {healthConditions.find(c => c.value === healthCondition)?.label}.
+          </p>
+        )}
+      </div>
 
       {loading ? (
         <div className="space-y-6">
