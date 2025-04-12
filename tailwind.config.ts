@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,16 +53,35 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				// Custom app colors
+				mint: {
+					100: '#E0F5EB',
+					200: '#B8EAD5',
+					300: '#8FD9BF',
+					400: '#67C7A9',
+					500: '#3EB593',
+				},
+				lavender: {
+					100: '#E5E1FA',
+					200: '#CDC6F5',
+					300: '#B2A7EF',
+					400: '#9B8BEA',
+					500: '#8370E5',
+				},
+				peach: {
+					100: '#FFEADE',
+					200: '#FFCFBD',
+					300: '#FFB39D',
+					400: '#FF977C',
+					500: '#FF7B5C',
+				},
+				sky: {
+					100: '#DFF8FF',
+					200: '#BDEFFF',
+					300: '#9AE5FF',
+					400: '#78DCFF',
+					500: '#56D3FF',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -70,25 +90,32 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'pulse-gentle': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-gentle': 'pulse-gentle 3s infinite',
+				'scale-in': 'scale-in 0.2s ease-out',
 			}
 		}
 	},
