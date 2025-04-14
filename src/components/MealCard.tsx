@@ -4,25 +4,36 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Utensils } from "lucide-react";
 import { Meal } from "@/utils/mealData";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface MealCardProps {
   meal: Meal;
 }
 
 const MealCard = ({ meal }: MealCardProps) => {
+  const [imageError, setImageError] = useState(false);
+  
+  const fallbackImage = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80";
+  
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <Link to={`/meal/${meal.id}`}>
       <Card className="overflow-hidden h-full card-hover">
-        <div className="aspect-video relative overflow-hidden">
+        <AspectRatio ratio={16/9} className="relative overflow-hidden">
           <img 
-            src={meal.imageUrl} 
+            src={imageError ? fallbackImage : meal.imageUrl} 
             alt={meal.name} 
+            onError={handleImageError}
             className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
           />
           <Badge className="absolute top-2 right-2 capitalize bg-white/80 backdrop-blur-sm text-foreground">
             {meal.mealType}
           </Badge>
-        </div>
+        </AspectRatio>
         <CardHeader className="pb-2">
           <CardTitle className="text-lg">{meal.name}</CardTitle>
           <CardDescription className="line-clamp-2">{meal.description}</CardDescription>
