@@ -199,8 +199,7 @@ export const meals: Meal[] = [
       "For plantain chips: Peel unripe (green) plantains.",
       "Slice the plantains thinly using a knife or mandoline slicer.",
       "Heat oil in a deep pan until moderately hot.",
-      "Fry the plantain slices in small batches until golden and crisp, about
-      2-3 minutes.",
+      "Fry the plantain slices in small batches until golden and crisp, about 2-3 minutes.",
       "Remove and drain on paper towels. Sprinkle with salt while still hot.",
       "For tiger nut milk: Soak tiger nuts in water for 6-8 hours or overnight.",
       "Rinse the soaked tiger nuts and blend with dates, coconut, and water until smooth.",
