@@ -101,8 +101,8 @@ const MealDetailPage = () => {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img 
-                  src={meal.imageUrl} 
-                  alt={meal.name} 
+                  src={meal?.imageUrl} 
+                  alt={meal?.name} 
                   className="w-full h-auto object-cover"
                 />
               </div>
@@ -112,28 +112,30 @@ const MealDetailPage = () => {
                 <div className="bg-white p-6 rounded-xl shadow-sm border">
                   <div className="grid grid-cols-4 gap-4 mb-6">
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{meal.calories}</div>
+                      <div className="text-2xl font-bold">{meal?.calories}</div>
                       <div className="text-sm text-muted-foreground">Calories</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-lavender-500">{meal.protein}g</div>
+                      <div className="text-2xl font-bold text-lavender-500">{meal?.protein}g</div>
                       <div className="text-sm text-muted-foreground">Protein</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-mint-500">{meal.carbs}g</div>
+                      <div className="text-2xl font-bold text-mint-500">{meal?.carbs}g</div>
                       <div className="text-sm text-muted-foreground">Carbs</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-peach-500">{meal.fat}g</div>
+                      <div className="text-2xl font-bold text-peach-500">{meal?.fat}g</div>
                       <div className="text-sm text-muted-foreground">Fat</div>
                     </div>
                   </div>
                   
-                  <NutritionChart 
-                    protein={meal.protein} 
-                    carbs={meal.carbs} 
-                    fat={meal.fat} 
-                  />
+                  {meal && (
+                    <NutritionChart 
+                      protein={meal.protein} 
+                      carbs={meal.carbs} 
+                      fat={meal.fat} 
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -141,34 +143,34 @@ const MealDetailPage = () => {
             <div>
               <div className="flex flex-wrap gap-2 mb-4">
                 <Badge className="capitalize bg-lavender-100 text-lavender-500 hover:bg-lavender-200">
-                  {meal.mealType}
+                  {meal?.mealType}
                 </Badge>
-                {meal.tags.map((tag, index) => (
+                {meal?.tags.map((tag, index) => (
                   <Badge key={index} variant="secondary" className="capitalize">
                     {tag}
                   </Badge>
                 ))}
               </div>
               
-              <h1 className="text-3xl font-bold mb-2">{meal.name}</h1>
+              <h1 className="text-3xl font-bold mb-2">{meal?.name}</h1>
               
               <div className="flex gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center gap-1">
                   <Utensils className="h-4 w-4" />
-                  <span>{meal.calories} calories</span>
+                  <span>{meal?.calories} calories</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="h-4 w-4" />
-                  <span>{meal.preparationTime} min preparation</span>
+                  <span>{meal?.preparationTime} min preparation</span>
                 </div>
               </div>
               
-              <p className="text-lg mb-8">{meal.description}</p>
+              <p className="text-lg mb-8">{meal?.description}</p>
               
               <div className="mb-8">
                 <h2 className="text-2xl font-semibold mb-4">Ingredients</h2>
                 <ul className="space-y-2">
-                  {meal.ingredients.map((ingredient, index) => (
+                  {meal?.ingredients.map((ingredient, index) => (
                     <li key={index} className="flex items-start">
                       <span className="inline-block h-2 w-2 bg-mint-400 rounded-full mt-2 mr-3"></span>
                       {ingredient}
@@ -177,11 +179,15 @@ const MealDetailPage = () => {
                 </ul>
               </div>
               
-              <div>
+              <div className="mb-8">
                 <h2 className="text-2xl font-semibold mb-4">Preparation</h2>
-                <p className="text-muted-foreground">
-                  This is a simple meal to prepare. Gather all ingredients, follow the recipe, and enjoy your {meal.name}!
-                </p>
+                <ol className="space-y-3 list-decimal list-inside">
+                  {meal?.preparationSteps.map((step, index) => (
+                    <li key={index} className="pl-2">
+                      <span className="text-muted-foreground">{step}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </div>
           </div>

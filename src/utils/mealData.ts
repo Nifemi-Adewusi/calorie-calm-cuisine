@@ -13,6 +13,7 @@ export interface Meal {
   preparationTime: number; // in minutes
   tags: string[];
   healthConditions?: string[]; // For specific health conditions
+  preparationSteps: string[]; // Added preparation steps
 }
 
 export const meals: Meal[] = [
@@ -29,7 +30,18 @@ export const meals: Meal[] = [
     ingredients: ["Black-eyed beans", "Onions", "Peppers", "Palm oil", "Corn pap", "Spices"],
     preparationTime: 35,
     tags: ["traditional", "vegetarian", "high-protein"],
-    healthConditions: ["diabetes-friendly", "weight-gain"]
+    healthConditions: ["diabetes-friendly", "weight-gain"],
+    preparationSteps: [
+      "Soak black-eyed beans for 2-3 hours, then peel the skin by rubbing between your palms.",
+      "Blend the peeled beans with peppers and onions into a thick paste. Add a pinch of salt.",
+      "Whip the mixture vigorously for 5 minutes to incorporate air, making the batter lighter.",
+      "Heat palm oil in a deep pan until very hot.",
+      "Using a spoon, scoop the bean mixture and drop into the hot oil to form small cakes.",
+      "Fry until golden brown on both sides, about 3-4 minutes per side.",
+      "For the pap, mix corn pap powder with cold water to form a paste.",
+      "Boil water separately, then add the pap paste while stirring continuously to avoid lumps.",
+      "Simmer for 3-5 minutes until it thickens. Serve hot with Akara."
+    ]
   },
   {
     id: "2",
@@ -44,7 +56,18 @@ export const meals: Meal[] = [
     ingredients: ["Black-eyed beans", "Red peppers", "Onions", "Palm oil", "Mixed fruits", "Fish (optional)"],
     preparationTime: 45,
     tags: ["high-protein", "gluten-free"],
-    healthConditions: ["diabetes-friendly", "heart-healthy"]
+    healthConditions: ["diabetes-friendly", "heart-healthy"],
+    preparationSteps: [
+      "Soak black-eyed beans for 30 minutes, then peel by rubbing between your palms.",
+      "Blend the beans with red peppers and onions until smooth.",
+      "Add a tablespoon of palm oil, salt, and spices to taste.",
+      "If using fish, break it into small pieces and add to the mixture.",
+      "Grease small heat-resistant containers or traditional leaves with oil.",
+      "Pour the mixture into the greased containers, covering them with foil or leaves.",
+      "Place the containers in a pot with water that comes halfway up the sides.",
+      "Steam on medium heat for 35-40 minutes until firm.",
+      "Allow to cool slightly before turning out. Serve with fresh cut seasonal fruits."
+    ]
   },
   {
     id: "3",
@@ -59,7 +82,19 @@ export const meals: Meal[] = [
     ingredients: ["Long grain rice", "Tomatoes", "Peppers", "Onions", "Chicken breast", "Nigerian spices"],
     preparationTime: 50,
     tags: ["popular", "high-protein"],
-    healthConditions: ["weight-gain"]
+    healthConditions: ["weight-gain"],
+    preparationSteps: [
+      "Marinate chicken breasts with salt, pepper, garlic, and ginger for at least 30 minutes.",
+      "Blend tomatoes, red peppers, and onions to make a smooth sauce.",
+      "Heat oil in a pot and sauté chopped onions until translucent.",
+      "Add the blended tomato mixture and cook on medium heat for 10-15 minutes.",
+      "Add Nigerian spices, curry powder, thyme, bay leaves, and a small amount of salt.",
+      "Wash rice thoroughly and add to the tomato sauce, stirring well.",
+      "Add chicken stock or water, just enough to cover the rice by about an inch.",
+      "Cover with foil and then the pot lid to trap steam, and cook on low heat for 25-30 minutes.",
+      "Meanwhile, grill the marinated chicken until fully cooked, about 6-8 minutes per side.",
+      "Fluff the rice with a fork when done and serve with the grilled chicken."
+    ]
   },
   {
     id: "4",
@@ -74,7 +109,19 @@ export const meals: Meal[] = [
     ingredients: ["Spinach/Green vegetables", "Peppers", "Onions", "Palm oil", "Grilled fish", "Nigerian spices"],
     preparationTime: 40,
     tags: ["high-protein", "low-carb", "nutrient-rich"],
-    healthConditions: ["diabetes-friendly", "weight-loss", "heart-healthy"]
+    healthConditions: ["diabetes-friendly", "weight-loss", "heart-healthy"],
+    preparationSteps: [
+      "Clean and chop spinach or other green vegetables into medium pieces.",
+      "Season fish with salt, pepper, and a little oil, then grill until cooked through.",
+      "Heat palm oil in a pot until hot but not smoking.",
+      "Add chopped onions and sauté until translucent.",
+      "Add blended peppers (red bell peppers and scotch bonnet) and cook for 10 minutes.",
+      "Add Nigerian spices, crayfish, and salt to taste.",
+      "If using, add small amounts of assorted meats or seafood at this point.",
+      "Simmer for 5-7 minutes until the sauce thickens slightly.",
+      "Add the chopped spinach, stir gently, and cook for 3-5 minutes until just wilted.",
+      "Serve hot with the grilled fish."
+    ]
   },
   {
     id: "5",
@@ -89,7 +136,20 @@ export const meals: Meal[] = [
     ingredients: ["Egusi (melon seeds)", "Assorted meats", "Vegetables", "Palm oil", "Yam", "Nigerian spices"],
     preparationTime: 65,
     tags: ["traditional", "rich", "filling"],
-    healthConditions: ["weight-gain"]
+    healthConditions: ["weight-gain"],
+    preparationSteps: [
+      "Blend or grind egusi seeds until fine, set aside.",
+      "Prepare assorted meats (beef, goat, tripe) by boiling with salt, onions, and spices until tender.",
+      "Heat palm oil in a pot until hot but not smoking.",
+      "Add chopped onions and sauté until translucent.",
+      "Add the ground egusi and fry for about 10 minutes, stirring frequently.",
+      "Add meat stock, crayfish, and additional spices. Simmer for 15 minutes.",
+      "Add the cooked meats and vegetables (spinach, bitter leaf, or ugu), stir gently.",
+      "Simmer for another 5-7 minutes until vegetables are wilted but still green.",
+      "For pounded yam, peel and cut yam into chunks, then boil until very soft.",
+      "Pound the boiled yam in a mortar until smooth and elastic, or blend using a food processor.",
+      "Serve hot egusi soup with a smooth ball of pounded yam."
+    ]
   },
   {
     id: "6",
@@ -104,7 +164,22 @@ export const meals: Meal[] = [
     ingredients: ["Fresh okra", "Fish", "Seafood", "Palm oil", "Wheat flour", "Nigerian spices"],
     preparationTime: 45,
     tags: ["fiber-rich", "gluten-free"],
-    healthConditions: ["diabetes-friendly", "weight-loss", "heart-healthy"]
+    healthConditions: ["diabetes-friendly", "weight-loss", "heart-healthy"],
+    preparationSteps: [
+      "Wash and slice okra into small rounds.",
+      "Clean and cut fish into medium-sized pieces.",
+      "Prepare seafood (shrimp, crab) by cleaning and removing shells where necessary.",
+      "Heat a tablespoon of palm oil in a pot.",
+      "Add chopped onions and sauté briefly.",
+      "Add fish, seafood, Nigerian spices, and a little salt. Cook for 5 minutes.",
+      "Add enough water to make a broth and simmer for 7-10 minutes.",
+      "Add sliced okra and cook for another 5-7 minutes until slightly slimy.",
+      "For wheat fufu, boil 2 cups of water.",
+      "In a bowl, mix wheat flour with cold water to form a paste.",
+      "Slowly add the paste to the boiling water, stirring continuously to avoid lumps.",
+      "Keep stirring until it thickens and becomes smooth, about 5-7 minutes.",
+      "Serve the hot okra soup with a ball of wheat fufu."
+    ]
   },
   {
     id: "7",
@@ -119,7 +194,20 @@ export const meals: Meal[] = [
     ingredients: ["Unripe plantain", "Tiger nuts", "Dates", "Coconut", "Spices"],
     preparationTime: 20,
     tags: ["quick", "vegan", "dairy-free"],
-    healthConditions: ["diabetes-friendly", "heart-healthy"]
+    healthConditions: ["diabetes-friendly", "heart-healthy"],
+    preparationSteps: [
+      "For plantain chips: Peel unripe (green) plantains.",
+      "Slice the plantains thinly using a knife or mandoline slicer.",
+      "Heat oil in a deep pan until moderately hot.",
+      "Fry the plantain slices in small batches until golden and crisp, about
+      2-3 minutes.",
+      "Remove and drain on paper towels. Sprinkle with salt while still hot.",
+      "For tiger nut milk: Soak tiger nuts in water for 6-8 hours or overnight.",
+      "Rinse the soaked tiger nuts and blend with dates, coconut, and water until smooth.",
+      "Strain the mixture through a fine mesh sieve or cheesecloth.",
+      "Add a pinch of cinnamon or nutmeg for extra flavor.",
+      "Refrigerate until cold and serve with the plantain chips."
+    ]
   },
   {
     id: "8",
@@ -134,7 +222,19 @@ export const meals: Meal[] = [
     ingredients: ["Lean beef", "Suya spice", "Cabbage", "Tomatoes", "Onions", "Cucumber"],
     preparationTime: 25,
     tags: ["high-protein", "low-carb", "spicy"],
-    healthConditions: ["weight-loss", "weight-gain"]
+    healthConditions: ["weight-loss", "weight-gain"],
+    preparationSteps: [
+      "Slice lean beef (sirloin or tenderloin) into thin, flat pieces.",
+      "Make suya spice by mixing ground peanuts, ginger, garlic powder, paprika, cayenne pepper, and salt.",
+      "Thread the beef slices onto skewers.",
+      "Generously coat the beef with suya spice, pressing it firmly to adhere.",
+      "Let the meat marinate for at least 30 minutes, or ideally 2 hours.",
+      "Grill the beef skewers on medium-high heat for 3-4 minutes per side.",
+      "For the salad, finely shred cabbage and slice tomatoes, onions, and cucumber.",
+      "Mix the vegetables in a bowl and sprinkle with a little salt.",
+      "Add a dash of olive oil and lemon juice for dressing.",
+      "Serve the hot suya with the fresh cabbage salad."
+    ]
   }
 ];
 
