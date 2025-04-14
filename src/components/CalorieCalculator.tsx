@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/components/ui/use-toast";
 import { Activity, Dumbbell, BarChart3 } from "lucide-react";
 
@@ -15,7 +14,8 @@ const CalorieCalculator = () => {
     age: 30,
     gender: "female",
     weight: 70,
-    height: 170,
+    heightFeet: 5,
+    heightInches: 7,
     activityLevel: "moderate",
   });
   const [calories, setCalories] = useState<number | null>(null);
@@ -29,17 +29,21 @@ const CalorieCalculator = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSliderChange = (name: string, value: number[]) => {
-    setFormData({ ...formData, [name]: value[0] });
+  // Convert feet and inches to centimeters for the calculation
+  const convertHeightToCm = (feet: number, inches: number): number => {
+    return (feet * 30.48) + (inches * 2.54);
   };
 
   const calculateCalories = () => {
+    // Convert height from feet/inches to cm for the formula
+    const heightInCm = convertHeightToCm(formData.heightFeet, formData.heightInches);
+    
     // Basic BMR calculation using Mifflin-St Jeor Equation
     let bmr = 0;
     if (formData.gender === "male") {
-      bmr = 10 * formData.weight + 6.25 * formData.height - 5 * formData.age + 5;
+      bmr = 10 * formData.weight + 6.25 * heightInCm - 5 * formData.age + 5;
     } else {
-      bmr = 10 * formData.weight + 6.25 * formData.height - 5 * formData.age - 161;
+      bmr = 10 * formData.weight + 6.25 * heightInCm - 5 * formData.age - 161;
     }
 
     // Activity multiplier
@@ -124,21 +128,42 @@ const CalorieCalculator = () => {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="height">Height (cm)</Label>
-          <div className="pt-2">
-            <Slider
-              id="height"
-              name="height"
-              value={[formData.height]}
-              min={140}
-              max={220}
-              step={1}
-              onValueChange={(value) => handleSliderChange("height", value)}
-            />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="heightFeet">Height (feet)</Label>
+            <Select
+              value={formData.heightFeet.toString()}
+              onValueChange={(value) => handleSelectChange("heightFeet", value)}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Feet" />
+              </SelectTrigger>
+              <SelectContent>
+                {[4, 5, 6, 7].map((feet) => (
+                  <SelectItem key={feet} value={feet.toString()}>
+                    {feet} ft
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-          <div className="text-sm text-muted-foreground text-center">
-            {formData.height} cm
+          <div className="space-y-2">
+            <Label htmlFor="heightInches">Height (inches)</Label>
+            <Select
+              value={formData.heightInches.toString()}
+              onValueChange={(value) => handleSelectChange("heightInches", value)}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Inches" />
+              </SelectTrigger>
+              <SelectContent>
+                {Array.from({ length: 12 }, (_, i) => i).map((inch) => (
+                  <SelectItem key={inch} value={inch.toString()}>
+                    {inch} in
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
